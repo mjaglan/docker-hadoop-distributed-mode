@@ -5,17 +5,13 @@ IMG_NAME="mjaglan/ubuntuhadoop2017"
 HOST_PREFIX="testbed"
 NETWORK_NAME=$HOST_PREFIX
 
-# clean up containers
+# if desired, clean up containers
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 
 # if desired, clean up images
 #docker rmi $(docker images -q)
 #docker rmi  "$IMG_NAME"
-
-
-# exit on error
-set -e
 
 # total number of slave nodes
 N=${1:-3}
@@ -60,6 +56,3 @@ docker exec -it $HADOOP_MASTER "/usr/local/hadoop/hadoop-services.sh"
 
 # attach to hadoop master container
 docker attach $HADOOP_MASTER
-
-# unset flag
-set +e
