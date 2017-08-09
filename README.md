@@ -1,4 +1,4 @@
-# Run Hadoop 2.7 on Docker in Fully-distributed mode
+# Run Hadoop 2.7 inside docker container in Multi-Node Cluster mode
 
 ## Install Docker CE on Ubuntu
 
