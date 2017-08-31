@@ -31,7 +31,7 @@ docker build  -t "$IMG_NAME" "$(pwd)"
 # Hadoop multi-node cluster does NOT work on default network.
 # Create a new network with any name, and keep 'bridge' driver for 'local' scope.
 NET_QUERY=$(docker network ls | grep -i $NETWORK_NAME)
-if [ -z $NET_QUERY ]; then
+if [ -z "$NET_QUERY" ]; then
 	docker network create --driver=bridge $NETWORK_NAME
 fi
 
@@ -45,8 +45,20 @@ do
 done
 
 # start hadoop master container
+: '
+LINK: https://stackoverflow.com/a/35901232
+Daemon                   Default Port  Configuration Parameter
+-----------------------  ------------ ----------------------------------
+ResourceManager          8088         yarn.resourcemanager.webapp.address
+Namenode                 50070        dfs.http.address
+Datanodes                50075        dfs.datanode.http.address
+Secondarynamenode        50090        dfs.secondary.http.address
+'
 HADOOP_MASTER="$HOST_PREFIX"-master
-docker run --name $HADOOP_MASTER -h $HADOOP_MASTER -p 50070:50070 -p 8088:8088 --net=$NETWORK_NAME -itd "$IMG_NAME"
+docker run --name $HADOOP_MASTER -h $HADOOP_MASTER --net=$NETWORK_NAME \
+		-p  8088:8088  -p 50070:50070 \
+		-p 50075:50075 -p 50090:50090 \
+		-itd "$IMG_NAME"
 
 # see active docker containers
 docker ps

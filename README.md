@@ -36,6 +36,7 @@ The [hadoop-services.sh](scripts/hadoop-services.sh) is running following comman
 
 - Basic Hadoop filesystem information and statistics
 	```
+	
 	Configured Capacity: 37912903680 (35.31 GB)
 	Present Capacity: 11530969088 (10.74 GB)
 	DFS Remaining: 11530944512 (10.74 GB)
@@ -58,6 +59,16 @@ The [hadoop-services.sh](scripts/hadoop-services.sh) is running following comman
 
 - (Optional) Hadoop MRBENCH Test
 
+# Web UI
+
+- NameNode can be accessed on host machine browser at [http://HOST-OS-IP:8088/](http://0.0.0.0:8088/)
+
+- Resource Manager can be accessed on host machine browser at [http://HOST-OS-IP:50070/](http://0.0.0.0:50070/)
+
+- Secondary NameNode can be accessed on host machine browser at [http://HOST-OS-IP:50090/](http://0.0.0.0:50090/)
+
+- DataNode can be accessed on host machine browser at [http://HOST-OS-IP:50075/](http://0.0.0.0:50075/)
+
 ## Tools
 ```
 Docker version 17.06.0-ce
@@ -65,3 +76,12 @@ Ubuntu Trusty 14.04 Host OS
 Eclipse IDE for Java EE Developers Oxygen (4.7.0)
 Eclipse Docker Tooling 3.1.0
 ```
+
+# Configuration References
+- [Apache Hadoop 2.7.2 docs](https://hadoop.apache.org/docs/r2.7.2/)
+- [core-default.xml](https://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/core-default.xml)
+- [hdfs-default.xml](https://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)
+- [mapred-default.xml](https://hadoop.apache.org/docs/r2.7.2/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml)
+- [yarn-default.xml](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-common/yarn-default.xml)
+- [DeprecatedProperties.html](https://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/DeprecatedProperties.html)
+
